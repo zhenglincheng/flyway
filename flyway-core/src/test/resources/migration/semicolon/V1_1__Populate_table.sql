@@ -16,5 +16,4 @@
 
 INSERT INTO test_user (name) VALUES ('Mr. T');
 INSERT INTO test_user (name) VALUES ('Mr. Semicolon;');
-INSERT INTO test_user (name) VALUES ('Mr. Semicolon+Linebreak;
-another line');
+INSERT INTO test_user (name) VALUES ('Mr. Semicolon+Linebreak;another line');

@@ -14,22 +14,22 @@
 -- limitations under the License.
 --
 
-CREATE TABLE "user" (
+CREATE TABLE user (
   name VARCHAR(25) NOT NULL,
   PRIMARY KEY(name)
 );
 
-CREATE TABLE "group" (
+CREATE TABLE group (
   name VARCHAR(25) NOT NULL,
   PRIMARY KEY(name)
 );
 
-CREATE TABLE "table" (
+CREATE TABLE table (
   name VARCHAR(25) NOT NULL,
   PRIMARY KEY(name)
 );
 
-CREATE TABLE "dol$lar" (
+CREATE TABLE dol$lar (
   name VARCHAR(25) NOT NULL,
   PRIMARY KEY(name)
 );

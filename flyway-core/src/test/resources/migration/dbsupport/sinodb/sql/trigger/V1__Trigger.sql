@@ -14,13 +14,29 @@
 -- limitations under the License.
 --
 
-CREATE TABLE couple (
-  id INT NOT NULL,
-  name1 VARCHAR(25) NOT NULL,
-  name2 VARCHAR(25) NOT NULL,
-  PRIMARY KEY(id),
-  FOREIGN KEY (name1) REFERENCES test_user(name),
-  FOREIGN KEY (name2) REFERENCES test_user(name)
+DROP TABLE IF EXISTS test1;
+CREATE TABLE test1(a1 INT);
+DROP TABLE IF EXISTS test2;
+CREATE TABLE test2(a2 INT);
+DROP TABLE IF EXISTS test3;
+CREATE TABLE test3(a3 serial NOT NULL PRIMARY KEY);
+DROP TABLE IF EXISTS test4;
+CREATE TABLE test4(
+  a4 serial NOT NULL PRIMARY KEY,
+  b4 INT DEFAULT 0
 );
 
-INSERT INTO couple (id, name1, name2) VALUES (1, 'Mr. Iße T', 'Mr. Semicolon;');
+DELIMITER $$
+
+CREATE PROCEDURE testref_update(newa1 int)
+INSERT INTO test2 (a2) values (NEWa1);
+DELETE FROM test3 WHERE a3 = NEWa1;
+UPDATE test4 SET b4 = b4 + 1 WHERE a4 = NEWa1;
+END PROCEDURE;
+$$
+
+CREATE TRIGGER testref INSERT ON test1 referencing new as new
+FOR EACH ROW
+(execute procedure testref_update(new.a1));
+
+$$

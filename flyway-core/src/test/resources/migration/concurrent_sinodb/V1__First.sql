@@ -14,13 +14,8 @@
 -- limitations under the License.
 --
 
-CREATE TABLE couple (
+CREATE TABLE ${schema}.test_user (
   id INT NOT NULL,
-  name1 VARCHAR(25) NOT NULL,
-  name2 VARCHAR(25) NOT NULL,
-  PRIMARY KEY(id),
-  FOREIGN KEY (name1) REFERENCES test_user(name),
-  FOREIGN KEY (name2) REFERENCES test_user(name)
+  name VARCHAR(25) NOT NULL,  -- this is a valid comment
+  PRIMARY KEY(name)  /* and so is this ! */
 );
-
-INSERT INTO couple (id, name1, name2) VALUES (1, 'Mr. Iße T', 'Mr. Semicolon;');

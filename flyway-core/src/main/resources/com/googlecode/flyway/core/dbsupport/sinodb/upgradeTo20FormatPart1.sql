@@ -1,5 +1,5 @@
 --
--- Copyright 2010-2013 Axel Fontaine and the many contributors.
+-- Copyright 2015-2017 Sinoregal.
 --
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
@@ -14,13 +14,5 @@
 -- limitations under the License.
 --
 
-CREATE TABLE couple (
-  id INT NOT NULL,
-  name1 VARCHAR(25) NOT NULL,
-  name2 VARCHAR(25) NOT NULL,
-  PRIMARY KEY(id),
-  FOREIGN KEY (name1) REFERENCES test_user(name),
-  FOREIGN KEY (name2) REFERENCES test_user(name)
-);
 
-INSERT INTO couple (id, name1, name2) VALUES (1, 'Mr. Iße T', 'Mr. Semicolon;');
+

@@ -199,6 +199,12 @@
                 <optional>true</optional>
             </dependency>
             <dependency>
+                <groupId>com.ibm.informix</groupId>
+                <artifactId>jdbc</artifactId>
+                <version>3.50.JC6W1</version>
+                <optional>true</optional>
+            </dependency>
+            <dependency>
                 <groupId>com.google.appengine</groupId>
                 <artifactId>appengine-api-1.0-sdk</artifactId>
                 <version>${version.appengine}</version>

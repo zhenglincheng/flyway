@@ -1,5 +1,5 @@
 /**
- * Copyright 2010-2013 Axel Fontaine and the many contributors.
+ * Copyright 2015-2017 Sinoregal.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

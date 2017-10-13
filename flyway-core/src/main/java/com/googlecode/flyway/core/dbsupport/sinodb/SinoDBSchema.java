@@ -1,5 +1,5 @@
 /**
- * Copyright 2015-2017 Sinoregal
+ * Copyright 2015-2017 Sinoregal.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -247,14 +247,18 @@ public class SinoDBSchema extends Schema {
      * @return All types in the schema.
      */
     public final Type[] doAllTypes() throws SQLException {
-          List<Type> types = new ArrayList<Type>();
-          String rTypesqlQuery="select name from SYSXTDTYPES where mode='R' and owner= ? ";
-          List<String> RTypeName = jdbcTemplate.queryForStringList(rTypesqlQuery, name);
-          for (int i = 0; i < RTypeName.size(); i++) {
-              types.add(new SinoDBRowType(jdbcTemplate, dbSupport, this, RTypeName.get(i)));
-          }
+          return doAllRowTypes();
 //          String cTypesqlQuery="select name from SYSXTDTYPES where mode='C' and owner= ? ";
 //          List<String> cTypeName = jdbcTemplate.queryForStringList(cTypesqlQuery, name);
-          return types.toArray(new Type[types.size()]);
+    }
+
+    private final Type[] doAllRowTypes() throws SQLException{
+        List<Type> types = new ArrayList<Type>();
+        String rTypesqlQuery="select name from SYSXTDTYPES where mode='R' and owner= ? ";
+        List<String> RTypeName = jdbcTemplate.queryForStringList(rTypesqlQuery, name);
+        for (int i = 0; i < RTypeName.size(); i++) {
+            types.add(new SinoDBRowType(jdbcTemplate, dbSupport, this, RTypeName.get(i)));
+        }
+        return types.toArray(new Type[types.size()]);
     }
 }

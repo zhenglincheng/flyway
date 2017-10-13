@@ -1,5 +1,5 @@
 /**
- * Copyright 2015-2017 Sinoregal
+ * Copyright 2015-2017 Sinoregal.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,12 @@
  */
 package com.googlecode.flyway.core.dbsupport.sinodb;
 
+import com.googlecode.flyway.core.api.FlywayException;
 import com.googlecode.flyway.core.dbsupport.DbSupport;
 import com.googlecode.flyway.core.dbsupport.JdbcTemplate;
 import com.googlecode.flyway.core.dbsupport.Schema;
 import com.googlecode.flyway.core.dbsupport.Table;
 import java.sql.SQLException;
-import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * SinoDB Dynamic Server-specific table.
@@ -37,6 +37,11 @@ public class SinoDBTable extends Table {
      */
     public SinoDBTable(JdbcTemplate jdbcTemplate, DbSupport dbSupport, Schema schema, String name) {
         super(jdbcTemplate, dbSupport, schema, name);
+        try {
+            jdbcTemplate.execute("SET LOCK MODE TO WAIT");
+        } catch (SQLException e) {
+            throw new FlywayException("Can not Set Lock Mode!",e);
+        }
     }
 
     @Override
@@ -56,8 +61,6 @@ public class SinoDBTable extends Table {
 
     @Override
     protected void doLock() throws SQLException {
-        jdbcTemplate.update("SET LOCK MODE TO WAIT 100");
         jdbcTemplate.update("LOCK TABLE " + this + " IN EXCLUSIVE MODE");
-
     }
 }

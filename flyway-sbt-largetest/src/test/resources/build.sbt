@@ -8,7 +8,7 @@ name := "flyway-sbt-largetest"
 libraryDependencies ++= Seq(
   "org.springframework" % "spring-jdbc" % "3.0.5.RELEASE",
   "org.hsqldb" % "hsqldb" % "2.2.8",
-  "com.googlecode.flyway" % "flyway-core" % "0-SNAPSHOT"
+  "com.googlecode.flyway" % "flyway-core" % "2.3.1"
 )
 
 resolvers += (

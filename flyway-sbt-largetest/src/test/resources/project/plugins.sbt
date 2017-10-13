@@ -2,7 +2,7 @@ import scala.xml._
 
 addSbtPlugin("com.github.mpeltonen" % "sbt-idea" % "1.5.2")
 
-addSbtPlugin("com.googlecode.flyway" % "flyway-sbt" % "0-SNAPSHOT")
+addSbtPlugin("com.googlecode.flyway" % "flyway-sbt" % "2.3.1")
 
 libraryDependencies ++= Seq(
   "org.springframework" % "spring-jdbc" % "3.0.5.RELEASE"
